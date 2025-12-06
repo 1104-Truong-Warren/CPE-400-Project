@@ -1,5 +1,5 @@
 #Ignore .o files
-.o
+*.o
 
 #Ignore the executable
 graph
