@@ -1,5 +1,5 @@
-graph: main.o datagram.o edge.o node.o
-	g++ main.o datagram.o edge.o node.o -o graph
+graph: main.o datagram.o edge.o node.o display.o
+	g++ main.o datagram.o edge.o node.o display.o -o graph
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -12,6 +12,9 @@ datagram.o: datagram.h datagram.cpp
 
 edge.o: edge.h edge.cpp
 	g++ -c edge.cpp
+
+display.o: display.h display.cpp
+	g++ -c display.cpp
 
 clean:
 	rm *.o graph

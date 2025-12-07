@@ -3,10 +3,9 @@
 
 #include <string>
 #include "node.h"
-class Node;
 using namespace std;
 
-enum flagEnum:char{WEIGHT_CHANGE='w', EDGE_CHANGE='e', ROUTE_DISCOVER='r', NORMAL='n', ERROR='z'};
+enum flagEnum:char{WEIGHT_CHANGE='w', EDGE_CHANGE='e', ROUTE_DISCOVERY='r', NORMAL='n', ERROR='z'};
 class Datagram
 {
     private:
