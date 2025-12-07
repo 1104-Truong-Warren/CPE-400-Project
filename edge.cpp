@@ -4,7 +4,7 @@ Edge::Edge()
 {
     weight=-1;
     id="ERROR";
-    src='z';
+    src='y';
     dest='z';
 }
 
