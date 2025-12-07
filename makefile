@@ -14,7 +14,7 @@ edge.o: edge.h edge.cpp
 	g++ -c edge.cpp
 
 display.o: display.h display.cpp
-	g++ -c display.cpp
+	g++ -std=c++17 -c display.cpp $(shell pkg-config --cflags sfml-graphics sfml-window sfml-system)
 
 clean:
 	rm *.o graph
