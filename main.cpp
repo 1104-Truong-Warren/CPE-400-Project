@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     Node a;
     Node b;
     flagEnum flag=WEIGHT_CHANGE;
-    Datagram datagram("ab", &a, &b, flag, 0);
+    Datagram datagram("ab", &a, &b, flag);
     cout<<datagram.getID()<<'\n'<<datagram.getSrc()<<'\n'<<datagram.getDest()<<'\n'<<flag<<'\n';
     
     //cout<<edge.getID()<<'\n';
