@@ -4,15 +4,13 @@ Edge::Edge()
 {
     weight=-1;
     id="ERROR";
-    src='y';
-    dest='z';
+    dest=NULL;
 }
 
-Edge::Edge(string i, int wei, char s, char d)
+Edge::Edge(string i, int wei, Node* d)
 {
     id=i;
     weight=wei;
-    src=s;
     dest=d;
 }
 
@@ -20,7 +18,6 @@ Edge::Edge(const Edge& rhs)
 {
     id=rhs.id;
     weight=rhs.weight;
-    src=rhs.src;
     dest=rhs.dest;
 }
 
@@ -34,21 +31,12 @@ void Edge::setID(string i)
     id=i;
 }
 
-char Edge::getSrc()
-{
-    return src;
-}
 
-void Edge::setSrc(char s)
-{
-    src=s;
-}
-
-char Edge::getDest()
+Node* Edge::getDest()
 {
     return dest;
 }
-void Edge::setDest(char d)
+void Edge::setDest(Node* d)
 {
     dest=d;
 }

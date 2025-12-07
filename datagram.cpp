@@ -3,15 +3,19 @@
 Datagram::Datagram()
 {
     id="ERROR";
-    src='y';
-    dest='z';
+    src=NULL;
+    dest=NULL;
+    flag=ERROR;
+    hopCount=-1;
 }
 
-Datagram::Datagram(string i, char s, char d)
+Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl, int hop)
 {
     id=i;
     src=s;
     dest=d;
+    flag=fl;
+    hopCount=hop;
 }
 
 Datagram::Datagram(const Datagram& rhs)
@@ -19,6 +23,7 @@ Datagram::Datagram(const Datagram& rhs)
     id=rhs.id;
     src=rhs.src;
     dest=rhs.dest;
+    hopCount=rhs.hopCount;
 }
 
 string Datagram::getID()
@@ -31,22 +36,42 @@ void Datagram::setID(string i)
     id=i;
 }
 
-char Datagram::getSrc()
+Node* Datagram::getSrc()
 {
     return src;
 }
 
-void Datagram::setSrc(char s)
+void Datagram::setSrc(Node* s)
 {
     src=s;
 }
 
-char Datagram::getDest()
+Node* Datagram::getDest()
 {
     return dest;
 }
 
-void Datagram::setDest(char d)
+void Datagram::setDest(Node* d)
 {
     dest=d;
+}
+
+char Datagram::getFlag()
+{
+    return flag;
+}
+
+void Datagram::setFlag(char fl)
+{
+    flag=fl;
+}
+
+int Datagram::getHopCount()
+{
+    return hopCount;
+}
+
+void Datagram::setHopCount(int hop)
+{
+    hopCount=hop;
 }
