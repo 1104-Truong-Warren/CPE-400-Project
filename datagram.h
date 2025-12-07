@@ -32,7 +32,7 @@ class Datagram
         void setFlag(char fl);
 
         int getHopCount();
-        void setHopCount(int hop);
+        void incrementHopCount();
 };
 
 #endif

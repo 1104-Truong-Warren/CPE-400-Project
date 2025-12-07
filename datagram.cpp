@@ -70,7 +70,7 @@ int Datagram::getHopCount()
     return hopCount;
 }
 
-void Datagram::setHopCount(int hop)
+void Datagram::incrementHopCount()
 {
-    hopCount=hop;
+    hopCount++;
 }
