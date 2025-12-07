@@ -16,7 +16,7 @@ class Datagram
         int hopCount;
     public:
         Datagram();
-        Datagram(string i, Node* s, Node* d, flagEnum fl, int hop);
+        Datagram(string i, Node* s, Node* d, flagEnum fl);
         Datagram(const Datagram& rhs);
 
         string getID();

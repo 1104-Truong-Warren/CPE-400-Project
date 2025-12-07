@@ -6,16 +6,15 @@ Datagram::Datagram()
     src=NULL;
     dest=NULL;
     flag=ERROR;
-    hopCount=-1;
+    hopCount=0;
 }
 
-Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl, int hop)
+Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl)
 {
     id=i;
     src=s;
     dest=d;
     flag=fl;
-    hopCount=hop;
 }
 
 Datagram::Datagram(const Datagram& rhs)
