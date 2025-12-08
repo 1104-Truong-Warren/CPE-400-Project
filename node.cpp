@@ -16,6 +16,7 @@ Node::Node(char id, std::vector<Edge> ed) //needs to be workshoped
 	edges = ed;
 	mode = setUp;
 	flag = false; 
+	buildInitalRoutingTable();
 
 }
 Node::Node(const Node& rhs)
@@ -66,8 +67,27 @@ bool Node::isEmpty() const {
 }
 
 void Node::buildInitalRoutingTable(){
-	
+	//note for this to work, edges must be predefined
+	//check iff we have edges
+	if(edges.size()>0){
+		routingTable.resize(edges.size());// makes one row for every edge to a neighbor
+		for(int i = 0; i < 3; i++){
+			routingTable[i].resize(3);// make 3 colms,
+			//each row is a route entry for a neigboring row. 
+			//1st colm is the id of the node, 2nd colum is the total cost to get to the node 3rd colum is the id of next hop node to follow this route
+		}
+		for(int i = 0; i < routingTable.size(); i++){
+			routingTable[i][0] = edges[i].getDest()->getId(); 
+		}
+		for(int i = 0; i < 3; i++){
+			routingTable[i][1] = edges[i].getWeight();
+		}
+		for(int i = 0; i < 3; i++){
+			routingTable[i][2] = edges[i].getDest()->getId();
+		}
+	}
 }
 void Node::advertiseRtToNeigbors(){
-
+	//send a data gram to node 
+	// the datagram needs to hold my routing table and the source of routing table. 
 }
