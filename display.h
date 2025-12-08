@@ -3,10 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "node.h"
 #include "edge.h"
-
-using namespace std;
 
 class Display 
 {
@@ -16,7 +13,7 @@ private:
 
 public:
     Display(unsigned int width, unsigned int height);
-    void draw(const vector<Node>& nodes, const vector<Edge>& edges);
+    void draw(const std::vector<Edge*>& edges);  // <-- must match cpp
     bool isOpen() const;
     void pollEvents();
 };
