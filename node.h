@@ -3,23 +3,40 @@
 
 #include <vector>
 #include "edge.h"
+#include "datagram.h"
+
 #define MAXNODES 50
 #define MAXEDGES 5
 #define MAXBUFFERSIZE 32
 #define INF 1000000
+enum modes {Normal, setUp, Err};
 class Node{
 	private:
 		char id;
-		//Packet buffer[MAXBUFFERSIZE];
-		int bufferCount; 
-		int routingTable[MAXNODES][MAXNODES];
-		int routingTableN;
-		Edge edges[MAXEDGES];
-		int numEdges; 
+		std::vector<Datagram> buffer;
+		//int bufferCount; 
+		//int routingTable[MAXNODES][MAXNODES];
+		std::vector<std::vector<int>> routingTable;
+		//int routingTableN;
+		//Edge edges[MAXEDGES];
+		std::vector<Edge> edges;
+
+		int mode; 
+		bool flag;// internal flag that gets checked with the Datagram flag. 
+		//
 	public:
 		Node();
-		Node(char id, int bufferCount, int routingTable[MAXNODES][MAXNODES], int routingTableN, Edge edges[MAXEDGES], int numEdges);
+		Node(char id,std::vector<std::vector<int>> rT,std::vector<Edge> ed, char mode);
 		Node(const Node& rhs); 
+		
+		//getters
+		char getId();
+		int getBufferCount();
+
+		//setters
+		//functons that repesent 
+		//weightChangeNotify()
+		//
 
 		
 };
