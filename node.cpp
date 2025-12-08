@@ -6,15 +6,16 @@ Node::Node(){ //treated as an error detection
 		//buffer, routingTable and edges are all of size 0
 		mode = Err;
 }
-Node::Node(char id, std::vector<std::vector<int>> rT, std::vector<Edge> ed, char mode) //add flag.
-	: id(id), 
-	mode(mode){
+Node::Node(char id, std::vector<Edge> ed) //needs to be workshoped
+	: id(id){
 	// buffer starts at size() == 0.
 	
 	// copy all the values into this routingTable
-	routingTable = rT;
+	//call function to setUp my routing table
 	//copy all the values into this edges
 	edges = ed;
+	mode = setUp;
+	flag = false; 
 
 }
 Node::Node(const Node& rhs)
@@ -28,3 +29,4 @@ Node::Node(const Node& rhs)
 	//copy all the values into the edges
 	edges = rhs.edges;
 }
+
