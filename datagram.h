@@ -5,15 +5,17 @@
 #include "node.h"
 using namespace std;
 
-enum flagEnum:char{WEIGHT_CHANGE='w', EDGE_CHANGE='e', ROUTE_DISCOVERY='r', NORMAL='n', ERROR='z'};
+enum flagEnum:char{WEIGHT_CHANGE='w', EDGE_CHANGE='e', ROUTE_DISCOVERY='r', NORMAL='n'};
 class Datagram
 {
     private:
         string id;
         Node* src;
         Node* dest;
-        char flag;
+        flagEnum flag;
         int hopCount;
+        int weightChange;
+        bool routerFlag; //Set by the router sending a flag during a state where routing tables are being updated
     public:
         Datagram();
         Datagram(string i, Node* s, Node* d, flagEnum fl);
@@ -28,8 +30,8 @@ class Datagram
         Node* getDest();
         void setDest(Node* d);
 
-        char getFlag();
-        void setFlag(char fl);
+        flagEnum getFlag();
+        void setFlag(flagEnum fl);
 
         int getHopCount();
         void incrementHopCount();

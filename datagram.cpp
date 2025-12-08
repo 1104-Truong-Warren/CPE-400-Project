@@ -5,8 +5,8 @@ Datagram::Datagram()
     id="ERROR";
     src=NULL;
     dest=NULL;
-    flag=ERROR;
     hopCount=0;
+    weightChange=-1;
 }
 
 Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl)
@@ -55,12 +55,12 @@ void Datagram::setDest(Node* d)
     dest=d;
 }
 
-char Datagram::getFlag()
+flagEnum Datagram::getFlag()
 {
     return flag;
 }
 
-void Datagram::setFlag(char fl)
+void Datagram::setFlag(flagEnum fl)
 {
     flag=fl;
 }
