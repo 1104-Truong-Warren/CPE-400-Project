@@ -1,46 +1,30 @@
 #include "node.h"
 
-Node::Node(){
-		id = '?'; //defualt node name
-		//Packet buffer[MAXBUFFERSIZE];
-		bufferCount = -1;
-		//initatlize the routing table with infinity
-		for(int i = 0; i < MAXNODES; i++ ){ 
-			for(int j = 0; j < MAXNODES; j++){
-				routingTable[i][j] = INF;
-			}
-		}
-		routingTableN = -1;
-		numEdges = -1; 
+Node::Node(){ //treated as an error detection
+		//defualt node name
+		id = '?';
+		//buffer, routingTable and edges are all of size 0
+		mode = Err;
 }
-Node::Node(char id, int bufferCount, int routingTable[MAXNODES][MAXNODES], int routingTableN, Edge edges[MAXEDGES], int numEdges)
+Node::Node(char id, std::vector<std::vector<int>> rT, std::vector<Edge> ed, char mode) //add flag.
 	: id(id), 
-	bufferCount(bufferCount), 
-	routingTableN(routingTableN), 
-	numEdges(numEdges){
+	mode(mode){
+	// buffer starts at size() == 0.
+	
+	// copy all the values into this routingTable
+	routingTable = rT;
+	//copy all the values into this edges
+	edges = ed;
 
-	for(int i = 0; i < routingTableN; i++ ){ 
-		for(int j = 0; j < routingTableN; j++){
-			this->routingTable[i][j] = routingTable[i][j];
-		}
-	}
-	for(int i = 0; i < numEdges; i++){
-		this->edges[i] = edges[i];
-	}	
 }
-Node::Node(const Node& other)
-    : id(other.id),
-      bufferCount(other.bufferCount),
-      routingTableN(other.routingTableN),
-      numEdges(other.numEdges)
-{
-    for (int i = 0; i < routingTableN; i++) {
-        for (int j = 0; j < routingTableN; j++) {
-            this->routingTable[i][j] = other.routingTable[i][j];
-        }
-    }
-
-    for (int i = 0; i < numEdges; i++) {
-        this->edges[i] = other.edges[i];
-    }
+Node::Node(const Node& rhs)
+    : id(rhs.id),
+      mode(rhs.mode)
+	{
+	//copy all the values into the buffer
+	buffer = rhs.buffer;
+	//copy all the values into the routing table
+	routingTable = rhs.routingTable;
+	//copy all the values into the edges
+	edges = rhs.edges;
 }
