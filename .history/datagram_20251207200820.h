@@ -2,8 +2,7 @@
 #define DATAGRAM_H
 
 #include <string>
-//#include "node.h"
-class Node;
+#include "node.h"
 using namespace std;
 
 enum flagEnum:char{WEIGHT_CHANGE='w', EDGE_CHANGE='e', ROUTE_DISCOVERY='r', NORMAL='n'};
