@@ -19,6 +19,14 @@ Datagram::Datagram(string i, Node* s, Node* d, int wei, flagEnum fl, bool rfl)
     flag=fl;
     routerFlag=rfl;
 }
+Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl, std::vector<std::vector<char>> newDat)
+{
+    id=i;
+    src=s;
+    dest=d;
+    flag=fl;
+    data=newDat;
+}
 
 Datagram::Datagram(const Datagram& rhs)
 {
@@ -98,4 +106,9 @@ bool Datagram::getRouterFlag()
 void Datagram::setRouterFlag(bool rfl)
 {
     routerFlag=rfl;
+std::vector<std::vector<char>> Datagram::getData(){
+    return data;
+}
+void Datagram::setData(std::vector<std::vector<char>> newDat){
+    data = newDat;
 }
