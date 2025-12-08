@@ -7,14 +7,17 @@ Datagram::Datagram()
     dest=NULL;
     hopCount=0;
     weightChange=-1;
+    routerFlag=false;
 }
 
-Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl)
+Datagram::Datagram(string i, Node* s, Node* d, int wei, flagEnum fl, bool rfl)
 {
     id=i;
     src=s;
     dest=d;
+    weightChange=wei;
     flag=fl;
+    routerFlag=rfl;
 }
 
 Datagram::Datagram(const Datagram& rhs)
@@ -22,7 +25,9 @@ Datagram::Datagram(const Datagram& rhs)
     id=rhs.id;
     src=rhs.src;
     dest=rhs.dest;
+    flag=rhs.flag;
     hopCount=rhs.hopCount;
+    routerFlag=rhs.routerFlag;
 }
 
 string Datagram::getID()
@@ -65,6 +70,16 @@ void Datagram::setFlag(flagEnum fl)
     flag=fl;
 }
 
+int Datagram::getWeightChange()
+{
+    return weightChange;
+}
+
+void Datagram::setWeightChange(int wei)
+{
+    weightChange=wei;
+}
+
 int Datagram::getHopCount()
 {
     return hopCount;
@@ -73,4 +88,14 @@ int Datagram::getHopCount()
 void Datagram::incrementHopCount()
 {
     hopCount++;
+}
+
+bool Datagram::getRouterFlag()
+{
+    return routerFlag;
+}
+
+void Datagram::setRouterFlag(bool rfl)
+{
+    routerFlag=rfl;
 }

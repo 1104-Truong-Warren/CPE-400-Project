@@ -6,7 +6,7 @@
 class Node;
 using namespace std;
 
-enum flagEnum:char{WEIGHT_CHANGE='w', EDGE_CHANGE='e', ROUTE_DISCOVERY='r', NORMAL='n'};
+enum flagEnum:char{EDGE_CHANGE='e', ROUTE_CHANGE='r', NORMAL='n'};
 class Datagram
 {
     private:
@@ -19,7 +19,7 @@ class Datagram
         bool routerFlag; //Set by the router sending a flag during a state where routing tables are being updated
     public:
         Datagram();
-        Datagram(string i, Node* s, Node* d, flagEnum fl);
+        Datagram(string i, Node* s, Node* d, int wei, flagEnum fl, bool rfl);
         Datagram(const Datagram& rhs);
 
         string getID();
@@ -34,8 +34,14 @@ class Datagram
         flagEnum getFlag();
         void setFlag(flagEnum fl);
 
+        int getWeightChange();
+        void setWeightChange(int wei);
+
         int getHopCount();
         void incrementHopCount();
+
+        bool getRouterFlag();
+        void setRouterFlag(bool rfl);
 };
 
 #endif
