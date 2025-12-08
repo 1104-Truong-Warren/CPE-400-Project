@@ -16,6 +16,14 @@ Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl)
     dest=d;
     flag=fl;
 }
+Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl, std::vector<std::vector<char>> newDat)
+{
+    id=i;
+    src=s;
+    dest=d;
+    flag=fl;
+    data=newDat;
+}
 
 Datagram::Datagram(const Datagram& rhs)
 {
@@ -73,4 +81,10 @@ int Datagram::getHopCount()
 void Datagram::incrementHopCount()
 {
     hopCount++;
+}
+std::vector<std::vector<char>> Datagram::getData(){
+    return data;
+}
+void Datagram::setData(std::vector<std::vector<char>> newDat){
+    data = newDat;
 }
