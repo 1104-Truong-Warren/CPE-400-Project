@@ -3,3 +3,6 @@
 
 #Ignore the executable
 graph
+
+#ignore .history
+.history
