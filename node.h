@@ -2,6 +2,8 @@
 #define NODE_H
 
 #include <vector>
+#include <queue>
+#include <stdexcept>
 #include "edge.h"
 #include "datagram.h"
 
@@ -13,7 +15,7 @@ enum modes {Normal, setUp, Err};
 class Node{
 	private:
 		char id;
-		std::vector<Datagram> buffer;
+		std::queue<Datagram> buffer;
 		//int bufferCount; 
 		//int routingTable[MAXNODES][MAXNODES];
 		std::vector<std::vector<char>> routingTable;
@@ -31,8 +33,7 @@ class Node{
 		
 		//getters
 		const char getId();
-		const std::vector<Datagram>& getBuffer() const;
-		const Datagram& getButterAt(int i) const;
+		const std::queue<Datagram>& getBuffer() const;
 
 		const std::vector<std::vector<char>>& getRoutingTable() const;
 
@@ -40,8 +41,9 @@ class Node{
 		const Edge& getEdgeAt(int i) const;
 
 		//setters
-		void bufferEnque();
+		void bufferEnque(const Datagram& d);
 		Datagram bufferDeque();
+		bool isEmpty() const;
 
 		void buildInitalRoutingTable();
 		void advertiseRtToNeigbors();

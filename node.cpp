@@ -30,3 +30,44 @@ Node::Node(const Node& rhs)
 	edges = rhs.edges;
 }
 
+const char Node::getId(){
+	return id;
+}
+const std::queue<Datagram>& Node::getBuffer() const{
+	return buffer; 
+}
+const std::vector<std::vector<char>>& Node::getRoutingTable() const{
+	return routingTable;
+}
+
+const std::vector<Edge>& Node::getEdges() const{
+	return edges;
+}
+const Edge& Node::getEdgeAt(int i) const{
+	return edges[i];
+}
+
+//setters
+void Node::bufferEnque(const Datagram& d) {
+	buffer.push(d);
+}
+
+Datagram Node::bufferDeque() {
+	if (buffer.empty()) {
+		throw std::runtime_error("Buffer is empty");
+	}
+	Datagram d = buffer.front();
+	buffer.pop();
+	return d;
+}
+
+bool Node::isEmpty() const {
+	return buffer.empty();
+}
+
+void Node::buildInitalRoutingTable(){
+	
+}
+void Node::advertiseRtToNeigbors(){
+
+}
