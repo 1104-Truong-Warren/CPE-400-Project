@@ -5,4 +5,4 @@
 graph
 
 #ignore .history
-.history
+.history/
