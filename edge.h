@@ -8,7 +8,7 @@ using namespace std;
 class Edge
 {
     private:
-        string id;
+        string id; //Should follow the convention of "(ID of source)(ID of destination)"; i.e. "ab" for an edge from a to b
         int weight;
         //Pointer to source is implied by the node who owns the particular instance of edge
         Node* dest;

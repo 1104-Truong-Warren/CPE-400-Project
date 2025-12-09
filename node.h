@@ -28,7 +28,7 @@ class Node{
 		//
 	public:
 		Node();
-		Node(char id,std::vector<Edge> ed);
+		Node(char id); //,std::vector<Edge> ed
 		Node(const Node& rhs); 
 		
 		//getters
@@ -37,6 +37,7 @@ class Node{
 
 		const std::vector<std::vector<char>>& getRoutingTable() const;
 
+		void addEdge(Edge& newEdge);
 		const std::vector<Edge>& getEdges() const;
 		const Edge& getEdgeAt(int i) const;
 

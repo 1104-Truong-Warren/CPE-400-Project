@@ -7,21 +7,22 @@
 class Node;
 using namespace std;
 
-enum flagEnum:char{EDGE_CHANGE='e', ROUTE_CHANGE='r', NORMAL='n'};
+enum flagEnum:char{EDGE_CHANGE='e', ROUTE_CHANGE='r', NORMAL='n', FORWARD='f'};
 class Datagram
 {
     private:
         string id;
         Node* src;
         Node* dest;
+        Node* forwardDest;
         flagEnum flag;
         int hopCount;
-        int weightChange;
+        int delay; //Will tell main how long to wait before adding packet to node's buffer queue
         bool routerFlag; //Set by the router sending a flag during a state where routing tables are being updated
         std::vector<std::vector<char>> data;
     public:
         Datagram();
-        Datagram(string i, Node* s, Node* d, int wei, flagEnum fl, bool rfl);
+        Datagram(string i, Node* s, Node* d, int del, flagEnum fl, bool rfl, std::vector<std::vector<char>> newDat);
         Datagram(const Datagram& rhs);
 
         string getID();
@@ -36,8 +37,8 @@ class Datagram
         flagEnum getFlag();
         void setFlag(flagEnum fl);
 
-        int getWeightChange();
-        void setWeightChange(int wei);
+        int getDelay();
+        void setDelay(int delay);
 
         int getHopCount();
         void incrementHopCount();
@@ -46,7 +47,9 @@ class Datagram
         void setRouterFlag(bool rfl);
         
         std::vector<std::vector<char>> getData();
-        void setData(std::vector<std::vector<char>> newDat);//acts as a copyier
+        void setData(std::vector<std::vector<char>> newDat);//acts as a copier
+
+        Datagram operator<(Datagram rhs); //For use in a priority queue in main
 };
 
 #endif

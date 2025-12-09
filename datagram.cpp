@@ -5,26 +5,20 @@ Datagram::Datagram()
     id="ERROR";
     src=NULL;
     dest=NULL;
+    forwardDest=NULL;
     hopCount=0;
-    weightChange=-1;
+    delay=-1;
     routerFlag=false;
 }
 
-Datagram::Datagram(string i, Node* s, Node* d, int wei, flagEnum fl, bool rfl)
+Datagram::Datagram(string i, Node* s, Node* d, int del, flagEnum fl, bool rfl, std::vector<std::vector<char>> newDat)
 {
     id=i;
     src=s;
     dest=d;
-    weightChange=wei;
+    delay=del;
     flag=fl;
     routerFlag=rfl;
-}
-Datagram::Datagram(string i, Node* s, Node* d, flagEnum fl, std::vector<std::vector<char>> newDat)
-{
-    id=i;
-    src=s;
-    dest=d;
-    flag=fl;
     data=newDat;
 }
 
@@ -78,14 +72,14 @@ void Datagram::setFlag(flagEnum fl)
     flag=fl;
 }
 
-int Datagram::getWeightChange()
+int Datagram::getDelay()
 {
-    return weightChange;
+    return delay;
 }
 
-void Datagram::setWeightChange(int wei)
+void Datagram::setDelay(int del)
 {
-    weightChange=wei;
+    delay=del;
 }
 
 int Datagram::getHopCount()
@@ -106,9 +100,21 @@ bool Datagram::getRouterFlag()
 void Datagram::setRouterFlag(bool rfl)
 {
     routerFlag=rfl;
+}
+
 std::vector<std::vector<char>> Datagram::getData(){
     return data;
 }
+
 void Datagram::setData(std::vector<std::vector<char>> newDat){
     data = newDat;
+}
+
+Datagram Datagram::operator<(Datagram rhs)
+{
+    if(delay<rhs.delay)
+    {
+        return *this;
+    }
+    return rhs;
 }

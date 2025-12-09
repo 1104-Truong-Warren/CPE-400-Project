@@ -6,17 +6,17 @@ Node::Node(){ //treated as an error detection
 		//buffer, routingTable and edges are all of size 0
 		mode = Err;
 }
-Node::Node(char id, std::vector<Edge> ed) //needs to be workshoped
+Node::Node(char id) //needs to be workshoped , std::vector<Edge> ed
 	: id(id){
 	// buffer starts at size() == 0.
 	
 	// copy all the values into this routingTable
 	//call function to setUp my routing table
 	//copy all the values into this edges
-	edges = ed;
+	//edges = ed;
 	mode = setUp;
 	flag = false; 
-	buildInitalRoutingTable();
+	//buildInitalRoutingTable();
 
 }
 Node::Node(const Node& rhs)
@@ -39,6 +39,15 @@ const std::queue<Datagram>& Node::getBuffer() const{
 }
 const std::vector<std::vector<char>>& Node::getRoutingTable() const{
 	return routingTable;
+}
+
+void Node::addEdge(Edge& newEdge)
+{
+	edges.insert(edges.begin()+edges.size(), newEdge);
+	if(edges.size()==4)
+	{
+		buildInitalRoutingTable();
+	}
 }
 
 const std::vector<Edge>& Node::getEdges() const{
