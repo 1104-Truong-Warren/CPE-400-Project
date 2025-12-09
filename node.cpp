@@ -43,10 +43,15 @@ const std::vector<std::vector<char>>& Node::getRoutingTable() const{
 
 void Node::addEdge(Edge& newEdge)
 {
-	edges.insert(edges.begin()+edges.size(), newEdge);
+	if(edges.size()<4)
+	{
+		edges.insert(edges.begin()+edges.size(), newEdge);
+	}
+	
 	if(edges.size()==4)
 	{
-		buildInitalRoutingTable();
+		//buildInitalRoutingTable();
+		//Resulting in a segmentation fault at the moment
 	}
 }
 
