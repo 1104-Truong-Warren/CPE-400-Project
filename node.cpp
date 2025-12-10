@@ -31,7 +31,7 @@ Node::Node(const Node& rhs)
 	edges = rhs.edges;
 }
 
-const char Node::getId(){
+const char Node::getId() const{
 	return id;
 }
 const std::queue<Datagram>& Node::getBuffer() const{

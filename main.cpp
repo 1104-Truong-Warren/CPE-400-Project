@@ -3,7 +3,7 @@
 #include "edge.h"
 #include "datagram.h"
 #include "node.h"
-//#include "display.h"
+#include "display.h"
 using namespace std;
 
 void generateNodes(std::vector<Node>& nodes);

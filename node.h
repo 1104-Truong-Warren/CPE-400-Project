@@ -18,7 +18,7 @@ class Node{
 		std::queue<Datagram> buffer;
 		//int bufferCount; 
 		//int routingTable[MAXNODES][MAXNODES];
-		std::vector<std::vector<char>> routingTable;
+		std::vector<std::vector<char> > routingTable;
 		//int routingTableN;
 		//Edge edges[MAXEDGES];
 		std::vector<Edge> edges;
@@ -32,10 +32,10 @@ class Node{
 		Node(const Node& rhs); 
 		
 		//getters
-		const char getId();
+		const char getId() const;
 		const std::queue<Datagram>& getBuffer() const;
 
-		const std::vector<std::vector<char>>& getRoutingTable() const;
+		const std::vector<std::vector<char> >& getRoutingTable() const;
 
 		void addEdge(Edge& newEdge);
 		const std::vector<Edge>& getEdges() const;

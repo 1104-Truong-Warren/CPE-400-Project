@@ -19,10 +19,10 @@ class Datagram
         int hopCount;
         int delay; //Will tell main how long to wait before adding packet to node's buffer queue
         bool routerFlag; //Set by the router sending a flag during a state where routing tables are being updated
-        std::vector<std::vector<char>> data;
+        std::vector<std::vector<char> > data;
     public:
         Datagram();
-        Datagram(string i, Node* s, Node* d, int del, flagEnum fl, bool rfl, std::vector<std::vector<char>> newDat);
+        Datagram(string i, Node* s, Node* d, int del, flagEnum fl, bool rfl, std::vector<std::vector<char> > newDat);
         Datagram(const Datagram& rhs);
 
         string getID();
@@ -46,8 +46,8 @@ class Datagram
         bool getRouterFlag();
         void setRouterFlag(bool rfl);
         
-        std::vector<std::vector<char>> getData();
-        void setData(std::vector<std::vector<char>> newDat);//acts as a copier
+        std::vector<std::vector<char> > getData();
+        void setData(std::vector<std::vector<char> > newDat);//acts as a copier
 
         Datagram operator<(Datagram rhs); //For use in a priority queue in main
 };
