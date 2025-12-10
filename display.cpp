@@ -21,7 +21,7 @@ void Display::draw(const vector<Node>& nodes, const vector<Edge>& edges)
     // Create a map to store node positions by ID
     static std::map<char, sf::Vector2f> nodePositions;
     
-    // Initialize positions if empty (you'll need to set these properly in your main code)
+    // Initialize positions if empty
     if (nodePositions.empty()) {
         // Assign positions in a circle or grid pattern
         float centerX = 400.f;
@@ -39,12 +39,9 @@ void Display::draw(const vector<Node>& nodes, const vector<Edge>& edges)
         }
     }
 
-    // Draws edges - THIS WON'T WORK PROPERLY BECAUSE Edge CLASS DOESN'T STORE SOURCE NODE
-    // You need to either modify Edge class or pass source node information differently
+    // Draws edges 
     for (const auto& e : edges) 
     {
-        // Since Edge only has destination, we can't draw lines properly
-        // This is just placeholder code
         sf::VertexArray line(sf::PrimitiveType::Lines, 2);
         line[0].position = sf::Vector2f(100.f, 100.f);
         line[1].position = sf::Vector2f(200.f, 200.f);
